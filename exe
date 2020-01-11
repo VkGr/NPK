@@ -1,0 +1,78 @@
+from tkinter import *
+
+
+class Paint(Frame):
+
+    def __init__(self, parent):
+        Frame.__init__(self, parent)
+
+        self.parent = parent
+        self.color = "black"
+        self.brush_size = 2
+        self.setUI()
+
+    def set_color(self, new_color):
+        self.color = new_color
+
+    def set_brush_size(self, new_size):
+        self.brush_size = new_size
+
+    def draw(self, event):
+        self.canv.create_oval(event.x - self.brush_size,
+                              event.y - self.brush_size,
+                              event.x + self.brush_size,
+                              event.y + self.brush_size,
+                              fill=self.color, outline=self.color)
+
+    def setUI(self):
+
+        self.parent.title("NetWork")  
+        self.pack(fill=BOTH, expand=1)  
+        self.columnconfigure(6, weight=1) 
+        self.rowconfigure(2, weight=1) 
+        self.canv = Canvas(self, bg="pink")  
+        self.canv.grid(row=2, column=0, columnspan=7,
+                       padx=5, pady=5, sticky=E+W+S+N)  
+        self.canv.bind("<B1-Motion>", self.draw) 
+        clear_btn = Button(self, text="Clear all", width=10,
+                           command=lambda: self.canv.delete("all"))
+
+        
+        clear_btn.grid(row=0, column=6, sticky=W)
+
+        size_lab = Label(self, text="Brush size: ")
+        size_lab.grid(row=1, column=0, padx=5)
+        one_btn = Button(self, text="Two", width=10,
+                         command=lambda: self.set_brush_size(2))
+        one_btn.grid(row=1, column=1)
+
+        two_btn = Button(self, text="Five", width=10,
+                         command=lambda: self.set_brush_size(5))
+        two_btn.grid(row=1, column=2)
+
+        five_btn = Button(self, text="Seven", width=10,
+                          command=lambda: self.set_brush_size(7))
+        five_btn.grid(row=1, column=3)
+
+        seven_btn = Button(self, text="Ten", width=10,
+                           command=lambda: self.set_brush_size(10))
+        seven_btn.grid(row=1, column=4)
+
+        ten_btn = Button(self, text="Twenty", width=10,
+                         command=lambda: self.set_brush_size(20))
+        ten_btn.grid(row=1, column=5)
+
+        twenty_btn = Button(self, text="Fifty", width=10,
+                            command=lambda: self.set_brush_size(50))
+        twenty_btn.grid(row=1, column=6, sticky=W)
+
+        
+def main():
+    root = Tk()
+    root.geometry("800x500+300+300")
+    app = Paint(root)
+    root.mainloop()
+
+
+if __name__ == '__main__':
+    main()
