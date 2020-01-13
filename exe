@@ -40,32 +40,6 @@ class Paint(Frame):
         
         clear_btn.grid(row=0, column=6, sticky=W)
 
-        size_lab = Label(self, text="Brush size: ")
-        size_lab.grid(row=1, column=0, padx=5)
-        one_btn = Button(self, text="Two", width=10,
-                         command=lambda: self.set_brush_size(2))
-        one_btn.grid(row=1, column=1)
-
-        two_btn = Button(self, text="Five", width=10,
-                         command=lambda: self.set_brush_size(5))
-        two_btn.grid(row=1, column=2)
-
-        five_btn = Button(self, text="Seven", width=10,
-                          command=lambda: self.set_brush_size(7))
-        five_btn.grid(row=1, column=3)
-
-        seven_btn = Button(self, text="Ten", width=10,
-                           command=lambda: self.set_brush_size(10))
-        seven_btn.grid(row=1, column=4)
-
-        ten_btn = Button(self, text="Twenty", width=10,
-                         command=lambda: self.set_brush_size(20))
-        ten_btn.grid(row=1, column=5)
-
-        twenty_btn = Button(self, text="Fifty", width=10,
-                            command=lambda: self.set_brush_size(50))
-        twenty_btn.grid(row=1, column=6, sticky=W)
-
         
 def main():
     root = Tk()
